@@ -1,4 +1,4 @@
-import '../models/dashboard_model.dart';
+import '../features/dashboard_model.dart';
 
 class DashboardRepository {
   /// Mendapatkan data dashboard

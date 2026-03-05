@@ -1,12 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data/models/dashboard_model.dart';
-import '../../data/repositories/dashboard_repository.dart';
+import 'dashboard_model.dart';
+import 'dashboard_repository.dart';
 
 final dashboardRepositoryProvider = Provider<DashboardRepository>((ref) {
   return DashboardRepository();
 });
 
-/// StateNotifier untuk mengelola state dashboard
 class DashboardNotifier extends StateNotifier<AsyncValue<DashboardData>> {
   final DashboardRepository _repository;
 
@@ -14,7 +13,6 @@ class DashboardNotifier extends StateNotifier<AsyncValue<DashboardData>> {
     loadDashboard();
   }
 
-  /// Load dashboard data
   Future<void> loadDashboard() async {
     state = const AsyncValue.loading();
     try {
@@ -25,7 +23,6 @@ class DashboardNotifier extends StateNotifier<AsyncValue<DashboardData>> {
     }
   }
 
-  /// Refresh dashboard
   Future<void> refresh() async {
     state = const AsyncValue.loading();
     try {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../data/models/dashboard_model.dart';
+import '../core/app_constants.dart';
+import '../core/app_theme.dart';
+import 'dashboard_model.dart';
 
 class StatCard extends StatelessWidget {
   final DashboardStats stats;

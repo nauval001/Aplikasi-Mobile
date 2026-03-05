@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/widgets/common_widgets.dart';
-import '../providers/dashboard_provider.dart';
-import '../widgets/dashboard_widgets.dart';
+import '../core/app_constants.dart';
+import '../core/common_widgets.dart';
+import 'dashboard_provider.dart';
+import 'dashboard_widgets.dart';
 
 class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
