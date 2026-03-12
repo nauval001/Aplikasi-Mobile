@@ -8,7 +8,7 @@ class DashboardRepository {
 
     // Data dummy
     return DashboardData(
-      userName: 'Admin D4TI',
+      userName: 'Nauval Putra Dika Ramadhani',
       lastUpdate: DateTime.now(),
       stats: [
         DashboardStats(
