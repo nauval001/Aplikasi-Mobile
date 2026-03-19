@@ -5,12 +5,8 @@ import '../core/common_widgets.dart';
 import 'dashboard_provider.dart';
 import 'dashboard_widgets.dart';
 import 'dosen_page.dart';
-
-// --- HALAMAN DUMMY (Sesuai Poin 12) ---
-class MahasiswaPage extends StatelessWidget { const MahasiswaPage({super.key}); @override Widget build(BuildContext context) { return Scaffold(appBar: AppBar(title: const Text('Mahasiswa'))); } }
-class MahasiswaAktifPage extends StatelessWidget { const MahasiswaAktifPage({super.key}); @override Widget build(BuildContext context) { return Scaffold(appBar: AppBar(title: const Text('Mahasiswa Aktif'))); } }
-class ProfilePage extends StatelessWidget { const ProfilePage({super.key}); @override Widget build(BuildContext context) { return Scaffold(appBar: AppBar(title: const Text('Profile'))); } }
-// --------------------------------------
+import 'mahasiswa_page.dart';
+import 'mahasiswa_aktif_page.dart';
 
 class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
@@ -147,11 +143,10 @@ class DashboardPage extends ConsumerWidget {
                                 final statTitle = stat.title;
                                 Widget? targetPage;
                                 switch (statTitle) {
-                                  case 'Total Mahasiswa': targetPage = const MahasiswaPage(); break;
+                                  case 'Mahasiswa': targetPage = const MahasiswaPage(); break;
                                   case 'Mahasiswa Aktif': targetPage = const MahasiswaAktifPage(); break;
-                                  case 'Jumlah Kelas': // Karena di dummy ada ini, asumsikan ke Dosen atau lainnya
+                                  case 'Jumlah Kelas':
                                   case 'Dosen': targetPage = const DosenPage(); break;
-                                  case 'Tingkat Kelulusan': targetPage = const ProfilePage(); break;
                                 }
                                 if (targetPage != null) {
                                   Navigator.push(context, _createRoute(targetPage));
