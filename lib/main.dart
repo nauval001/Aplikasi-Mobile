@@ -6,7 +6,6 @@ import 'features/dashboard_page.dart';
 
 void main() {
   runApp(
-    // ProviderScope adalah root untuk semua provider Riverpod
     const ProviderScope(child: MyApp()),
   );
 }

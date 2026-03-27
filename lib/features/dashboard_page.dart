@@ -50,7 +50,10 @@ class DashboardPage extends ConsumerWidget {
     return Scaffold(
       body: dashboardState.when(
         loading: () => const LoadingWidget(),
-        error: (error, stack) => CustomErrorWidget(message: 'Gagal memuat data: ${error.toString()}', onRetry: () { ref.read(dashboardNotifierProvider.notifier).refresh(); }),
+        error: (error, stack) => CustomErrorWidget(
+          message: 'Gagal memuat data: ${error.toString()}', 
+          onRetry: () { ref.read(dashboardNotifierProvider.notifier).refresh(); }
+        ),
         data: (dashboardData) {
           return RefreshIndicator(
             onRefresh: () async { ref.invalidate(dashboardNotifierProvider); },
@@ -59,7 +62,11 @@ class DashboardPage extends ConsumerWidget {
                 SliverToBoxAdapter(
                   child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Theme.of(context).primaryColor, Theme.of(context).primaryColor.withBlue(220)]),
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft, 
+                        end: Alignment.bottomRight, 
+                        colors: [Theme.of(context).primaryColor, Theme.of(context).primaryColor.withBlue(220)]
+                      ),
                       borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(32), bottomRight: Radius.circular(32)),
                       boxShadow: [BoxShadow(color: Theme.of(context).primaryColor.withOpacity(0.3), blurRadius: 20, offset: const Offset(0, 10))],
                     ),
@@ -129,7 +136,12 @@ class DashboardPage extends ConsumerWidget {
                         GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 16, mainAxisSpacing: 16, childAspectRatio: 1.1),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, 
+                            crossAxisSpacing: 16, 
+                            mainAxisSpacing: 16, 
+                            childAspectRatio: 1.1
+                          ),
                           itemCount: dashboardData.stats.length,
                           itemBuilder: (context, index) {
                             final stat = dashboardData.stats[index];
@@ -140,14 +152,24 @@ class DashboardPage extends ConsumerWidget {
                               isSelected: selectedIndex == index,
                               onTap: () {
                                 ref.read(selectedStatIndexProvider.notifier).state = index;
-                                final statTitle = stat.title;
+                                
                                 Widget? targetPage;
-                                switch (statTitle) {
-                                  case 'Mahasiswa': targetPage = const MahasiswaPage(); break;
-                                  case 'Mahasiswa Aktif': targetPage = const MahasiswaAktifPage(); break;
-                                  case 'Jumlah Kelas':
-                                  case 'Dosen': targetPage = const DosenPage(); break;
+                                switch (stat.title) {
+                                  case 'Total Mahasiswa': 
+                                    targetPage = const MahasiswaPage(); 
+                                    break;
+                                  case 'Mahasiswa Aktif': 
+                                    targetPage = const MahasiswaAktifPage(); 
+                                    break;
+                                  case 'Jumlah Kelas': 
+                                  case 'Dosen': 
+                                    targetPage = const DosenPage(); 
+                                    break;
+                                  case 'Tingkat Kelulusan': 
+                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Halaman Profil/Kelulusan belum dibuat')));
+                                    break;
                                 }
+                                
                                 if (targetPage != null) {
                                   Navigator.push(context, _createRoute(targetPage));
                                 }

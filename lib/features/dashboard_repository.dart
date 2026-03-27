@@ -1,9 +1,7 @@
 import '../features/dashboard_model.dart';
 
 class DashboardRepository {
-  /// Mendapatkan data dashboard
   Future<DashboardData> getDashboardData() async {
-    // network delay simulasi
     await Future.delayed(const Duration(seconds: 1));
 
     // Data dummy
